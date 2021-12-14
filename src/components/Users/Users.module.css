@@ -1,0 +1,25 @@
+.dialogs {
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+  /* grid-template-columns: 1fr 5fr; */
+}
+
+.dialogsItems {
+  padding: 10px;
+}
+
+.dialogsItems .active {
+  color: gold;
+}
+
+.messages {
+  padding: 10px;
+}
+
+.userPhoto {
+  width: 100px;
+  height: 100px;
+}
+.selectedPage {
+  font-weight: bold;
+}
