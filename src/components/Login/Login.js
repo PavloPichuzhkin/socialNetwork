@@ -7,41 +7,66 @@ import {
   required,
 } from "../../utils/validator/validators";
 import { login } from "../../redux/auth-reduser";
-import { TagInputOrTextarea } from "../common/FormsControls/FormControls";
+import {
+  createField,
+  Input,
+  TagInputOrTextarea,
+} from "../common/FormsControls/FormControls";
 import { Redirect } from "react-router";
 import style from "../common/FormsControls/FormControls.module.css";
 import { NavLink } from "react-router-dom";
 
 const maxLength30 = maxLength(30);
 const minLength2 = minLength(2);
-const Input = TagInputOrTextarea("input");
+// const Input = TagInputOrTextarea("input");
 
-const LoginForm = (props) => {
+const LoginForm = ({ handleSubmit, error }) => {
   return (
-    <form onSubmit={props.handleSubmit}>
-      <div>
+    <form onSubmit={handleSubmit}>
+      {createField(
+        "Email",
+        "email",
+        [required, maxLength30, minLength2],
+        Input
+      )}
+      {createField(
+        "Password",
+        "password",
+        [required, maxLength30, minLength2],
+        Input,
+        { type: "password" }
+      )}
+      {createField(
+        null,
+        "rememberMe",
+        [required],
+        Input,
+        { type: "checkbox" },
+        "remember me"
+      )}
+
+      {/* <div>
         <Field
           validate={[required, maxLength30, minLength2]}
           component={Input}
           placeholder="Email"
           name="email"
         />
-      </div>
-      <div>
+      </div> */}
+      {/* <div>
         <Field
           validate={[required, maxLength30, minLength2]}
           component={Input}
           placeholder="Password"
           name="password"
+          type="password"
         />
-      </div>
-      <div>
+      </div> */}
+      {/* <div>
         <Field component={Input} type="checkbox" name="rememberMe" />
         remember me
-      </div>
-      {props.error && (
-        <div className={style.formSummaryError}>{props.error}</div>
-      )}
+      </div> */}
+      {error && <div className={style.formSummaryError}>{error}</div>}
       <div>
         <button>Login</button>
       </div>

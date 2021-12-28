@@ -32,17 +32,13 @@ const MyPostsForm = (props) => {
 };
 const MyPostsReduxForm = reduxForm({ form: "newPosts" })(MyPostsForm);
 const MyPosts = React.memo((props) => {
-  // let newPostElement = React.createRef();
-  // const addPost = () => {
-  //   props.addPost();
-  // };
-  // const updatePostText = () => {
-  //   let text = newPostElement.current.value;
-  //   props.updatePostText(text);
-  // };
-
   let Posts = props.profilePage.posts.map((massegeItem) => (
-    <Post message={massegeItem.message} likesCount={massegeItem.likesCount} />
+    <Post
+      id={massegeItem.id}
+      message={massegeItem.message}
+      likesCount={massegeItem.likesCount}
+      deletePost={props.deletePost}
+    />
   ));
 
   let sandPostText = (formVal) => {

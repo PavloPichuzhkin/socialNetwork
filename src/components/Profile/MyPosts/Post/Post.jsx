@@ -3,8 +3,14 @@ import s from "./Post.module.css";
 
 const Post = (props) => {
   // debugger;
+  console.log(props);
   return (
-    <div className={s.item}>
+    <div
+      className={s.item}
+      onDoubleClick={() => {
+        props.deletePost(props.id);
+      }}
+    >
       <img src="https://movies4maniacs.liberty.me/wp-content/uploads/sites/1218/2015/09/avatarsucks.jpg" />
       {props.message}
       <div>

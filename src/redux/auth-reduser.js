@@ -1,4 +1,4 @@
-import { authAPI, usersAPI } from "../api/api";
+import { authAPI } from "../api/api";
 import { stopSubmit } from "redux-form";
 const SET_USER_DATA = "social-network/auth/SET_USER_DATA";
 
